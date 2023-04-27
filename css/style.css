@@ -31,7 +31,7 @@ body {
   align-items: center;
   max-width: 700px;
   margin: 0 auto;
-  border: 1px solid var(--primary-dark);
+  /* border: 1px solid var(--primary-dark); */
 }
 
 .main .grid-container {
@@ -41,10 +41,14 @@ body {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(16, 1fr);
+  box-shadow: 0 0 5px 0 black;
 }
 
 .grid-item {
   background-color: #fff;
+}
+
+.grid-item-border {
   border: 1px solid rgba(51, 51, 51, 0.5);
 }
 

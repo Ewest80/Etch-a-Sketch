@@ -1,6 +1,7 @@
 const gridContainer = document.getElementById('grid');
 const gridSizeText = document.getElementById('gridSizeText');
 const gridSizeInput = document.getElementById('gridSize');
+const borderBtn = document.getElementById('borderBtn');
 
 let rowNum = 16;
 let colNum = 16;
@@ -15,10 +16,14 @@ function CreateGrid(row, column) {
   for (let i = 0; i < column; i++) {
     for (let j = 0; j < row; j++) {
       const gridCell = document.createElement('div');
-      gridCell.classList.add('grid-item');
+      gridCell.classList.add('grid-item', 'grid-item-border');
       gridContainer.appendChild(gridCell)
     }
   }
+}
+
+function updateLabelText() {
+  gridSizeText.innerText = `Grid Size: ${gridSizeInput.value} x ${gridSizeInput.value}`;
 }
 
 // Update label while adjusting the slider
@@ -33,6 +38,9 @@ gridSizeInput.addEventListener('mouseup', () => {
   CreateGrid(colNum, rowNum);
 });
 
-function updateLabelText() {
-  gridSizeText.innerText = `Grid Size: ${gridSizeInput.value} x ${gridSizeInput.value}`;
-}
+borderBtn.addEventListener('click', () => {
+  const gridItems = document.querySelectorAll('.grid-item');
+  gridItems.forEach(item => {
+    item.classList.toggle('grid-item-border');
+  });
+});
