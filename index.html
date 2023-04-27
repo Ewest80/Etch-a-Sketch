@@ -9,6 +9,32 @@
   <title>Etch-a-Sketch</title>
 </head>
 <body>
-  
+  <header class="header">
+    <h1 class="title">Etch-a-Sketch</h1>
+  </header>
+
+  <section class="main">
+    <!-- Grid display -->
+    <div id="grid" class="grid-container">
+
+    </div>
+
+    <!-- Setting for changing size, color and clearing -->
+    <div class="settings">
+      <div class="grid-size-selector">
+        <label id="gridSizeText" for="grid-size">Grid Size: 16x16</label>
+        <input type="range" id="gridSize" name="grid-size" min="1" max="64" value="16">
+      </div>
+      <button id="selectColorBtn">Selected Color</button>
+      <button id="rainbowBtn">Rainbow</button>
+      <button id="borderBtn">Toggle Border</button>
+      
+    </div>
+    
+  </section>
+
+  <footer class="footer">
+
+  </footer>
 </body>
 </html>
