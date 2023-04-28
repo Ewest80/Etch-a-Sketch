@@ -24,7 +24,7 @@ function CreateGrid(row, column) {
   for (let i = 0; i < column; i++) {
     for (let j = 0; j < row; j++) {
       const gridCell = document.createElement('div');
-      gridCell.classList.add('grid-item', 'grid-item-border');
+      gridCell.classList.add('grid-item');
       gridCell.addEventListener('mouseenter', changeColor);
       gridCell.addEventListener('mousedown', changeColor);
       gridContainer.appendChild(gridCell);
@@ -79,10 +79,12 @@ borderBtn.addEventListener('click', () => {
 document.body.addEventListener('mousedown', () => mouseDown = true);
 document.body.addEventListener('mouseup', () => mouseDown = false);
 
-// Clear grid
+// Reset grid colors
 clearBtn.addEventListener('click', () => {
-  clearGrid();
-  CreateGrid(colNum, rowNum);
+  const gridItems = document.querySelectorAll('.grid-item');
+  gridItems.forEach(item => {
+    item.style.backgroundColor = '#fff';
+  });
 });
 
 // Color Modes
