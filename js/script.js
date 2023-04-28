@@ -2,6 +2,7 @@ const gridContainer = document.getElementById('grid');
 const gridSizeText = document.getElementById('gridSizeText');
 const gridSizeInput = document.getElementById('gridSize');
 const borderBtn = document.getElementById('borderBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 let rowNum = 16;
 let colNum = 16;
@@ -13,6 +14,7 @@ let color = '#333';
 
 CreateGrid(colNum, rowNum);
 
+// Create grid with possibility of non-square layouts
 function CreateGrid(row, column) {
   clearGrid();
   gridContainer.style.gridTemplateColumns = `repeat(${column}, 1fr)`;
@@ -40,7 +42,9 @@ function updateLabelText() {
 function changeColor(event) {
   if (event.type === 'mouseenter' && !mouseDown) return;
   
-  event.target.style.backgroundColor = color;
+  if (colorMode === 'COLOR_MODE') {
+    event.target.style.backgroundColor = color;
+  }
 }
 
 // Update label while adjusting the slider
@@ -66,3 +70,9 @@ borderBtn.addEventListener('click', () => {
 // Determine if mouse button is held down or not
 document.body.addEventListener('mousedown', () => mouseDown = true);
 document.body.addEventListener('mouseup', () => mouseDown = false);
+
+// Clear grid
+clearBtn.addEventListener('click', () => {
+  clearGrid();
+  CreateGrid(colNum, rowNum);
+});
