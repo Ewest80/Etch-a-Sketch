@@ -4,6 +4,7 @@ const gridSizeInput = document.getElementById('gridSize');
 const borderBtn = document.getElementById('borderBtn');
 const clearBtn = document.getElementById('clearBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
+const eraserBtn = document.getElementById('eraserBtn');
 
 let rowNum = 16;
 let colNum = 16;
@@ -53,6 +54,9 @@ function changeColor(event) {
     
     event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
   }
+  else if (colorMode === 'ERASER_MODE') {
+    event.target.style.backgroundColor = '#fff';
+  }
 }
 
 // Update label while adjusting the slider
@@ -92,3 +96,4 @@ clearBtn.addEventListener('click', () => {
 
 // Color Modes
 rainbowBtn.addEventListener('click', () => colorMode = 'RAINBOW_MODE');
+eraserBtn.addEventListener('click', () => colorMode = 'ERASER_MODE');
