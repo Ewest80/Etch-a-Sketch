@@ -76,7 +76,10 @@ borderBtn.addEventListener('click', () => {
 });
 
 // Determine if mouse button is held down or not
-document.body.addEventListener('mousedown', () => mouseDown = true);
+gridContainer.addEventListener('mousedown', (e) => {
+  e.preventDefault();
+  mouseDown = true
+});
 document.body.addEventListener('mouseup', () => mouseDown = false);
 
 // Reset grid colors
