@@ -14,7 +14,7 @@ let colNum = 16;
 let mouseDown = false;
 
 let colorMode = 'COLOR_MODE';
-let color = 'rgba(51, 51, 51, 1)';
+let color = '#333';
 
 CreateGrid(colNum, rowNum);
 
@@ -48,19 +48,28 @@ function changeColor(event) {
   
   if (colorMode === 'COLOR_MODE') {
     event.target.style.backgroundColor = color;
+    event.target.style.opacity = 1;
   }
   else if (colorMode === 'RAINBOW_MODE') {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
     
+    event.target.style.opacity = 1;
     event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
   }
   else if (colorMode === 'ERASER_MODE') {
-    event.target.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+    event.target.style.backgroundColor = '#fff';
+    event.target.style.opacity = 1;
   }
   else if (colorMode === 'SHADE_MODE') {
     
+    const currentOpacity = event.target.style.opacity;
+    const newOpacity = currentOpacity ? parseFloat(currentOpacity) + 0.1 : 0.1;
+    console.log(currentOpacity);
+    console.log(newOpacity);
+    event.target.style.backgroundColor = color;
+    event.target.style.opacity = newOpacity;
   }
 }
 
@@ -96,6 +105,7 @@ clearBtn.addEventListener('click', () => {
   const gridItems = document.querySelectorAll('.grid-item');
   gridItems.forEach(item => {
     item.style.backgroundColor = '#fff';
+    item.style.opacity = .1;
   });
 });
 
