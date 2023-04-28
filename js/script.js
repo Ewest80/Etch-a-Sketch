@@ -3,6 +3,7 @@ const gridSizeText = document.getElementById('gridSizeText');
 const gridSizeInput = document.getElementById('gridSize');
 const borderBtn = document.getElementById('borderBtn');
 const clearBtn = document.getElementById('clearBtn');
+const rainbowBtn = document.getElementById('rainbowBtn');
 
 let rowNum = 16;
 let colNum = 16;
@@ -45,6 +46,13 @@ function changeColor(event) {
   if (colorMode === 'COLOR_MODE') {
     event.target.style.backgroundColor = color;
   }
+  else if (colorMode === 'RAINBOW_MODE') {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    
+    event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+  }
 }
 
 // Update label while adjusting the slider
@@ -76,3 +84,6 @@ clearBtn.addEventListener('click', () => {
   clearGrid();
   CreateGrid(colNum, rowNum);
 });
+
+// Color Modes
+rainbowBtn.addEventListener('click', () => colorMode = 'RAINBOW_MODE');
