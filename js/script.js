@@ -5,14 +5,16 @@ const borderBtn = document.getElementById('borderBtn');
 const clearBtn = document.getElementById('clearBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
 const eraserBtn = document.getElementById('eraserBtn');
+const colorBtn = document.getElementById('colorBtn');
+const selectColor = document.getElementById('selectColor');
+const shadeBtn = document.getElementById('shadeBtn');
 
 let rowNum = 16;
 let colNum = 16;
 let mouseDown = false;
 
 let colorMode = 'COLOR_MODE';
-let color = '#333';
-
+let color = 'rgba(51, 51, 51, 1)';
 
 CreateGrid(colNum, rowNum);
 
@@ -55,7 +57,10 @@ function changeColor(event) {
     event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
   }
   else if (colorMode === 'ERASER_MODE') {
-    event.target.style.backgroundColor = '#fff';
+    event.target.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+  }
+  else if (colorMode === 'SHADE_MODE') {
+    
   }
 }
 
@@ -82,7 +87,7 @@ borderBtn.addEventListener('click', () => {
 // Determine if mouse button is held down or not
 gridContainer.addEventListener('mousedown', (e) => {
   e.preventDefault();
-  mouseDown = true
+  mouseDown = true;
 });
 document.body.addEventListener('mouseup', () => mouseDown = false);
 
@@ -97,3 +102,6 @@ clearBtn.addEventListener('click', () => {
 // Color Modes
 rainbowBtn.addEventListener('click', () => colorMode = 'RAINBOW_MODE');
 eraserBtn.addEventListener('click', () => colorMode = 'ERASER_MODE');
+selectColor.addEventListener('input', () => color = selectColor.value);
+colorBtn.addEventListener('click', () => colorMode = 'COLOR_MODE');
+shadeBtn.addEventListener('click', () => colorMode = 'SHADE_MODE');
