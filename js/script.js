@@ -60,14 +60,12 @@ function changeColor(event) {
   }
   else if (colorMode === 'ERASER_MODE') {
     event.target.style.backgroundColor = '#fff';
-    event.target.style.opacity = 1;
+    event.target.style.opacity = .1;
   }
   else if (colorMode === 'SHADE_MODE') {
     
     const currentOpacity = event.target.style.opacity;
     const newOpacity = currentOpacity ? parseFloat(currentOpacity) + 0.1 : 0.1;
-    console.log(currentOpacity);
-    console.log(newOpacity);
     event.target.style.backgroundColor = color;
     event.target.style.opacity = newOpacity;
   }
